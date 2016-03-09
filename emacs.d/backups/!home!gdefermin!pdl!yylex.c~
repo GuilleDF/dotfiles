@@ -1,0 +1,11 @@
+#include "lexico.h"
+
+intptr_t yyval;
+
+int yylex() {
+  token_t token;
+  getToken(&token, 0);
+  yyval = token.value;
+  if(token.type == EOF) return 0;
+  return token.type;
+}

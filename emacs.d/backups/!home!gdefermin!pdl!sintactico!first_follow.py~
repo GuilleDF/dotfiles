@@ -1,0 +1,54 @@
+def first(symlist):
+    if(symlist == []):
+        return ["lambda"]
+    res = []
+    i=0
+    finished = False
+    while not finished:
+        finished = True
+        if i == len(symlist):
+            res.append("lambda")
+            break
+        if not symlist[i].isupper():
+            res.append(symlist[i])
+            return res
+        for rule in rules[symlist[i]]:
+            for sym in first(rule):
+                if sym not in res:
+                    res.append(sym)
+            if "lambda" in res:
+                res.remove("lambda")
+                finished = False
+        i+=1
+    return res
+
+def follow(symbol):
+    res = []
+    for key in rules:
+        for rule in rules[key]:
+            positions = []
+            i=0
+            for sym in rule:
+                if sym == symbol:
+                    positions.append(i)
+                i+=1
+            if positions == []:
+                continue
+            for pos in positions:
+                if pos == len(rule)-1:
+                    if key == symbol:
+                        break
+                    for sym in follow(key):
+                        if sym not in res:
+                            res.append(sym)
+                else:
+                    f = first(rule[pos+1:])
+                    if "lambda" in f:
+                        f.remove("lambda")
+                        for sym in follow(key):
+                            if sym not in res:
+                                res.append(sym)
+                    for sym in f:
+                        if sym not in res:
+                            res.append(sym)
+    return res

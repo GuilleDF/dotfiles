@@ -1,0 +1,51 @@
+#include <math.h>
+#include "mathutils.h"
+
+double avg(double *val, int len) {
+  double sum = 0;
+  for(int i=0; i<len; i++)
+    sum += val[i];
+  return sum/len;
+}
+
+double var(double *val, int len) {
+  double sum = 0;
+  double mean = avg(val, len);
+  for(int i=0; i<len; i++)
+    sum += (val[i]-mean)*(val[i]-mean);
+  return sum/(len-1);
+}
+
+void getCI95(double *ci, double (*estimator)(double *,int), double *sample, int len) {
+  double phi[len];
+  double delone[len-1];
+  double ps[len];
+  double mps,vps;
+  double phin=(*estimator)(sample, len);
+
+  for(int i=0; i<len; i++) {
+    double sum=0;
+    int k=0;
+    for(int j=0; j<len; j++) {
+      if(j==i) continue;
+      delone[k] = sample[j];
+      k++;
+    }
+    phi[i] = (*estimator)(delone, len-1);
+    //printf("phi(%d)=%f\n",i,phi[i]);
+    ps[i] = len*phin - (len-1)*phi[i];
+  }
+  mps = avg(ps, len);
+  //printf("mps=%f\n", mps);
+  vps = var(ps, len);
+  double desv = 1.96*sqrt(vps/len);
+  
+  ci[0] = mps - desv;
+  ci[1] = mps + desv;
+}
+
+
+void getCI95_mv(double *ci_mean, double *ci_var, double *sample, int len) {
+  getCI95(ci_mean, &avg, sample, len);
+  getCI95(ci_var, &var, sample, len);
+}

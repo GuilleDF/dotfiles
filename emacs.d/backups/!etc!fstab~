@@ -1,0 +1,12 @@
+# /dev/sda7
+UUID=d53fb24f-29be-49d5-a57b-b27e53b8c180	/         	ext4      	rw,relatime,data=ordered	0 1
+
+# /dev/sda8
+UUID=760a2239-6e3b-428b-8c00-6021949c7cf7	/home     	xfs       	rw,relatime,attr2,inode64,noquota	0 2
+
+# /dev/sda2 LABEL=ESP
+UUID=B8B0-3317      	/boot     	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro	0 2
+
+# /dev/sda6
+UUID=cf541721-1bf7-4c27-9132-cac0ab8c9731	none      	swap      	defaults  	0 0
+

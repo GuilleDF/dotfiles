@@ -1,0 +1,12 @@
+#ifndef _SINTACTICO_H
+#define _SINTACTICO_H
+
+#include "lexico.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <sys/types.h>
+#include <fcntl.h>
+
+int callfunc(char **retval, char *func, char *args[2]);
+
+#endif

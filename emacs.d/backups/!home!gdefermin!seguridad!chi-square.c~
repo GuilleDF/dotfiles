@@ -1,0 +1,10 @@
+
+
+double chi_sq_test(double *obs, double *tfreq, int n_obs, int n_cls) {
+  double sum=0;
+  for(int i=0; i<n_cls; i++) {
+    double part1 = (obs[i]-n_obs*tfreq[i]);
+    sum += part1*part1/(n_obs*tfreq[i]);
+  }
+  return sum;
+}

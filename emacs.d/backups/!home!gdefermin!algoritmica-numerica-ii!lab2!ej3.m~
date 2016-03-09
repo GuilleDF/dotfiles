@@ -1,0 +1,6 @@
+T = [0,4];
+y0 = 0.85;
+tol = 1e-3;
+[T, S] = adapta12(@rara, T, y0, tol);
+
+plot(T,S);

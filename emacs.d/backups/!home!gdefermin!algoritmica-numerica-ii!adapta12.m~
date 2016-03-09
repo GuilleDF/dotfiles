@@ -1,0 +1,51 @@
+function [T S]=adapta12(fun,Tspan,y0,tol)
+%Metodo adaptativo basado en Heun + Euler
+% fun   -> funcion con la ec. diferencial
+% Tspan -> intervalo [a,b] donde resolver
+% y0    -> condición inicial
+% tol   -> cota del error relativo (p.e 1e-3 o 1e-5)
+
+% Si el usuario no dice nada tol=1e-3 (Erel pedido = 1e-3)
+if nargin==3, tol=1e-3; end
+
+% Ptos inicial y final del intervalo a resolver 
+T0=...
+Tfin=... 
+
+% Inicialización de h
+h = ...
+
+% Inicializar la salidas T y S con los valores iniciales 
+T = ...
+S = ...  
+
+while(T(end)<Tfin)
+ 
+ % Parto del ultimo punto de la solución     
+ t=T(end); y=S(:,end);  
+ 
+ % Calcular Euler y Heun en t+h a partir de punto partida (t,y)
+ 
+ 
+ % Calcular diferencia como estimacion error y calcular error relativo
+ 
+ 
+ % Calcular ratio r entre Erel y tol 
+ 
+
+ if ratio<=1,   % Paso aceptado, añadir los nuevos valores a T y S
+ 
+  
+ end 
+ 
+ % Actualizar h usando la formula optima con un factor 0.9 para estar seguros.
+ 
+end
+
+% Dejar esta parte para el final, despues de haber visto la aplicación
+% Recalcular el último paso para asegurarnos que T(end) = Tfin = fin intervalo
+
+
+return
+ 
+

@@ -1,0 +1,13 @@
+#ifndef _SEMANTICO_H
+#define _SEMANTICO_H
+
+#include "tipos.h"
+
+typedef struct semsymbol_t {
+  char lexema[64];
+  tipo_t tipo;
+  stipo_t tipo_ret; // el tipo de retorno solo puede ser simple
+  int ancho;
+} semsymbol_t;
+
+#endif

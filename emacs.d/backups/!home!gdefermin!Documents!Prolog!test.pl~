@@ -1,0 +1,4 @@
+?- algo(hola).
+
+test(Cosa) :-
+	algo(Cosa)

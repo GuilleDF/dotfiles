@@ -1,0 +1,22 @@
+nat(0).
+nat(s(X)) :- nat(X).
+
+plus(X,0,X).
+plus(X,s(Y),s(Z)) :- plus(X,Y,Z).
+
+% times/3
+times(X,0,0).
+times(X,s(Y),Z) :- times(X,Y,Tmp), plus(Tmp,X,Z).
+
+% exp/3
+exp(X,0,s(0)).
+exp(X,s(Y),Z) :- exp(X,Y,Tmp), times(Tmp,X,Z).
+
+% factorial/2
+factorial(0,s(1)).
+factorial(s(X),Z) :- factorial(X,Tmp), times(Tmp,s(X),Z).
+
+% minimum/3
+minimum(X,0,0).
+minimum(0,X,0).
+minimum()

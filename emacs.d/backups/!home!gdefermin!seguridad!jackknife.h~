@@ -1,0 +1,8 @@
+#ifndef _JACKKNIFE_H
+#define _JACKKNIFE_H
+
+#include <math.h>
+
+void getCI95(double *ci_mean, double *ci_desv, double *sample, int len);
+
+#endif

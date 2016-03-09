@@ -1,0 +1,11 @@
+v = 9640*.63;
+
+mindiff = 1000;
+actual = 0;
+for i=1:length(s)
+  dif = abs(s(1,i)-v);  
+  if(dif < mindiff)
+    mindiff = dif;
+    actual = i;
+  end
+end

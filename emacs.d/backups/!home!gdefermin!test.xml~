@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<factura>
+  <codigo-factura>1234DFG</codigo-factura>
+  <fecha-factura>23/01/1234</fecha-factura>
+  <destinatario>
+    <nif>50343444D</nif>
+    <nombre>Guillermo</nombre>
+    <apellido1>De Fermin</apellido1>
+    <apellido2>Cordeiro</apellido2>
+  </destinatario>
+  <direcccion-facturacion>
+    <nombre-via tipo-via="Avda.">Gran Via</nombre-via>
+    <numero>17</numero>
+    <codigo-postal>28807</codigo-postal>
+    <ciudad>Boadilla del Monte</ciudad>
+    <pais>ES</pais>
+  </direcccion-facturacion>
+  <!-- comentario -->
+  <lineas-producto>
+    <linea-producto id="1">
+      <id>1234RT</id>
+      <nombre>Potatoes</nombre>
+      <cantidad unidades="kg">5</cantidad>
+      <descuento>10</descuento>
+      <precio-unidad moneda="EUR">1.00</precio-unidad>
+    </linea-producto>
+    <linea-producto id="2">
+      <id>1111RT</id>
+      <nombre>Tomatoes</nombre>
+      <cantidad unidades="kg">5</cantidad>
+      <descuento>10</descuento>
+      <precio-unidad moneda="EUR">1.00</precio-unidad>
+    </linea-producto>
+  </lineas-producto>
+</factura>

@@ -1,0 +1,3 @@
+function [T,Y] = euler(@fun, intervalo, h, y0)
+
+end

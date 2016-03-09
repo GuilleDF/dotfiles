@@ -1,0 +1,21 @@
+function [T,XYZ] = rk4(fun, Tspan, h, y0)
+  s = length(y0);
+  t0=Tspan(1); tfin=Tspan(2); T=[t0:h:tfin]; % Tiempos
+  
+  N = length(T);  
+  XYZ=NaN*zeros(s,N); % Reservo espacio vector de soluciones
+
+  XYZ(:,1) = y0; % Uso la condición inicial suministrada
+
+  for k=1:N-1
+    tt = T(k); yy = Y(:,k);
+    K1 = fun(tt,yy);
+    m = K1; delta = h/2;
+    K2 = fun(tt+dt,yy+delta*m);
+    m = K2;
+    K3 = fun(tt+dt,yy+delta*m);
+    m = K3; delta = h;
+    K4 = fun(tt+dt,yy+delta*m);
+    K = (K1+2*K2+2*K3+K4)/6;
+  end
+end

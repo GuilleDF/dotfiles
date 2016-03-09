@@ -1,0 +1,6 @@
+# 
+# /etc/fstab: static file system information
+#
+# <file system>	<dir>	<type>	<options>	<dump>	<pass>
+/dev/mmcblk0p1  /boot   vfat    defaults        0       0
+/dev/sda1	/media/usb ext2	user,defaults,rw	0	0

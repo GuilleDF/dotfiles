@@ -1,0 +1,5 @@
+function sp = obus(t,s)
+  sp = zeros(2,1);
+
+  g = 9.8; p = 1.2; K = 7000;
+end
