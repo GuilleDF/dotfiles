@@ -1,5 +1,0 @@
-#include "sintactico.h"
-
-int main() {
-  callfunc(NULL, "accion", {"0","id"});
-}

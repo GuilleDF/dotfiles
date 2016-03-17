@@ -1,3 +1,0 @@
-f = open('gramatica','r')
-for line in f:
-    line = line.replace("\n","")

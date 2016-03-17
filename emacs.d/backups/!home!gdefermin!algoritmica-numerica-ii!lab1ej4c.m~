@@ -1,6 +1,0 @@
-V = volt(T);
-for i=1:length(V)
-  if V(i) == 6
-    i
-  end
-end 

@@ -35,3 +35,4 @@ function xsdtornc() {
 # Disabled, it slows down the cli
 # source /usr/share/doc/pkgfile/command-not-found.zsh
 
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh

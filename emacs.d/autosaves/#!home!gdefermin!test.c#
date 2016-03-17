@@ -1,9 +1,0 @@
-char **ptr;
-for() {
-  char **tmp = realloc(ptr, 234134);
-  if(!tmp) {
-    free(ptr);
-    exit();
-  }
-  ptr = tmp;
- }

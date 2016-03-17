@@ -1,5 +1,0 @@
-#!/bin/sh
-export LD_LIBRARY_PATH=
-export STEAM_FRAME_FORCE_CLOSE=1
-export STEAM_RUNTIME=0
-exec /usr/bin/steam_original
