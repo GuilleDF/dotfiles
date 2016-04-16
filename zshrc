@@ -19,6 +19,7 @@ colors
 
 source /usr/share/zsh/scripts/antigen/antigen.zsh
 
+antigen bundle git
 antigen use oh-my-zsh
 antigen theme lukerandall
 
