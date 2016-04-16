@@ -79,3 +79,10 @@
 (global-set-key (kbd "C-<right>") 'windmove-right)
 (global-set-key (kbd "C-<up>") 'windmove-up)
 (global-set-key (kbd "C-<down>") 'windmove-down)
+
+
+;; Term shortcut
+(defun open-term ()
+  (interactive)
+  (ansi-term "/usr/bin/zsh"))
+(global-set-key (kbd "C-<f3>") 'open-term)

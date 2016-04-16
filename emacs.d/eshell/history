@@ -1,0 +1,3 @@
+ls
+echo $PS1
+exit
