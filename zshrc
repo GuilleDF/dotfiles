@@ -37,3 +37,5 @@ function xsdtornc() {
 # source /usr/share/doc/pkgfile/command-not-found.zsh
 
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+export EDITOR="emacs -nw"
