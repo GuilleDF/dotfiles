@@ -19,6 +19,7 @@ colors
 
 source /usr/share/zsh/scripts/antigen/antigen.zsh
 
+antigen bundle git
 antigen use oh-my-zsh
 antigen theme lukerandall
 
@@ -36,3 +37,5 @@ function xsdtornc() {
 # source /usr/share/doc/pkgfile/command-not-found.zsh
 
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+export EDITOR="emacs -nw"

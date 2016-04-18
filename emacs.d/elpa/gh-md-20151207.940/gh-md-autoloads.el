@@ -3,7 +3,7 @@
 ;;; Code:
 (add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
 
-;;;### (autoloads nil "gh-md" "gh-md.el" (22287 29294 300219 176000))
+;;;### (autoloads nil "gh-md" "gh-md.el" (22290 24104 407682 195000))
 ;;; Generated autoloads from gh-md.el
 
 (defalias 'gh-md-render-region #'gh-md-convert-region)
