@@ -86,3 +86,6 @@
   (interactive)
   (ansi-term "/usr/bin/zsh"))
 (global-set-key (kbd "C-<f3>") 'open-term)
+
+;; Remove scroll bars
+(scroll-bar-mode -1)
