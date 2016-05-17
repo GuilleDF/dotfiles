@@ -17,7 +17,7 @@ autoload -U promptinit colors
 promptinit
 colors
 
-source /usr/share/zsh/scripts/antigen/antigen.zsh
+source ~/.zsh/antigen/antigen.zsh
 
 antigen bundle git
 antigen use oh-my-zsh
@@ -27,6 +27,6 @@ antigen theme lukerandall
 bindkey "^[[3~" delete-char
 bindkey "^[3;5~" delete-char
 
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 export EDITOR="emacs -nw"

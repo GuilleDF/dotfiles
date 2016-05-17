@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 
 for file in $(ls); do
     [ -e ~/.$file ] &&
