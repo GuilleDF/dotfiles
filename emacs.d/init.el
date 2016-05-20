@@ -107,3 +107,16 @@
     'irony-completion-at-point-async))
 (add-hook 'irony-mode-hook 'my-irony-mode-hook)
 (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+
+
+;; ROS stuff
+(defun ROS-c-mode-hook()
+  (setq c-basic-offset 2)
+  (setq indent-tabs-mode nil)
+  (c-set-offset 'substatement-open 0)
+  (c-set-offset 'innamespace 0)
+  (c-set-offset 'case-label '+))
+(add-hook 'c-mode-common-hook 'ROS-c-mode-hook)
+
+;;; In order to get namespace indentation correct, .h files must be opened in C++ mode
+(add-to-list 'auto-mode-alist '("\\.h$" . c++-mode))
