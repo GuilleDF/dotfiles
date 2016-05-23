@@ -35,3 +35,4 @@ source /opt/ros/jade/setup.zsh
 export AEROSTACK_WORKSPACE=/home/guillermo/workspace/ros/quadrotor_stack_catkin_ws
 export AEROSTACK_STACK=/home/guillermo/workspace/ros/quadrotor_stack_catkin_ws/src/quadrotor_stack
 export DRONE_STACK=/home/guillermo/workspace/ros/quadrotor_stack_catkin_ws/src/quadrotor_stack
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=white'
