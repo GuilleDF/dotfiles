@@ -2,3 +2,5 @@ emacs.d/backups/*
 emacs.d/autosaves/*
 emacs.d/auto-save-list/*
 *.dat
+*.gpg
+

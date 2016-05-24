@@ -24,6 +24,9 @@
 (require 'autopair)
 (autopair-global-mode)
 
+;; Highlight matching parenthesis
+(show-paren-mode 1)
+
 ;; MELPA
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
@@ -91,6 +94,9 @@
 (scroll-bar-mode -1)
 
 ;; Autocomplete for C/C++
+(require 'company)
+(require 'irony)
+(add-to-list 'company-backends 'company-irony)
 (add-hook 'c++-mode-hook 'irony-mode)
 (add-hook 'c-mode-hook 'irony-mode)
 (add-hook 'objc-mode-hook 'irony-mode)

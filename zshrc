@@ -29,7 +29,7 @@ bindkey "^[3;5~" delete-char
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-export EDITOR="emacs -nw"
+export EDITOR=emacs
 
 source /opt/ros/jade/setup.zsh
 export AEROSTACK_WORKSPACE=/home/guillermo/workspace/ros/quadrotor_stack_catkin_ws
