@@ -129,3 +129,6 @@
 
 ;; Remove toolbar
 (tool-bar-mode -1)
+
+;; Replace highlighted text in type
+(delete-selection-mode 1)
