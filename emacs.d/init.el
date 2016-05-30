@@ -104,6 +104,11 @@
 (add-hook 'c-mode-hook 'company-mode)
 (add-hook 'objc-mode-hook 'company-mode)
 
+;; Syntax checking
+(global-flycheck-mode)
+(require 'flycheck)
+(add-hook 'flycheck-mode-hook #'flycheck-irony-setup)
+
 ;; replace the `completion-at-point' and `complete-symbol' bindings in
 ;; irony-mode's buffers by irony-mode's function
 (defun my-irony-mode-hook ()
