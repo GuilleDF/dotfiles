@@ -135,5 +135,9 @@
 ;; Remove toolbar
 (tool-bar-mode -1)
 
+;; Prevent speedbar refresh
+(require 'sr-speedbar)
+(sr-speedbar-refresh-turn-off)
+
 ;; Replace highlighted text in type
 (delete-selection-mode 1)
