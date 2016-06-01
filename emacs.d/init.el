@@ -142,3 +142,7 @@
 
 ;; Replace highlighted text in type
 (delete-selection-mode 1)
+
+;; Make zshrc be recognized as .zshrc
+(add-to-list 'auto-mode-alist '("zshrc" . sh-mode))
+
