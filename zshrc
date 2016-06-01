@@ -36,3 +36,7 @@ export AEROSTACK_WORKSPACE=/home/guillermo/workspace/ros/quadrotor_stack_catkin_
 export AEROSTACK_STACK=/home/guillermo/workspace/ros/quadrotor_stack_catkin_ws/src/quadrotor_stack
 export DRONE_STACK=/home/guillermo/workspace/ros/quadrotor_stack_catkin_ws/src/quadrotor_stack
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=white'
+
+alias cm='cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON'
+alias ckm='catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=ON'
+alias ckmp='catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=ON --pkg'
