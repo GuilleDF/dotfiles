@@ -108,6 +108,7 @@
 (global-flycheck-mode)
 (require 'flycheck)
 (add-hook 'flycheck-mode-hook #'flycheck-irony-setup)
+(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
 
 ;; replace the `completion-at-point' and `complete-symbol' bindings in
 ;; irony-mode's buffers by irony-mode's function
