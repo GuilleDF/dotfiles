@@ -146,6 +146,9 @@
 ;; Make zshrc be recognized as .zshrc
 (add-to-list 'auto-mode-alist '("zshrc" . sh-mode))
 
+;; Make .launch files be recognized as xml
+(add-to-list 'auto-mode-alist '("\\.launch$" . nxml-mode))
+
 ;; Add yank-pop-forwards
 (defun yank-pop-forwards (arg)
   (interactive "p")
