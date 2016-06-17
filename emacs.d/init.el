@@ -1,3 +1,6 @@
+;;; init.el --- Emacs autostart file
+;;; Commentary:
+;;; Code:
 ;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -172,3 +175,6 @@
 ;; Intellij-like text moving
 (global-set-key (kbd "M-S-<up>") 'move-text-up)
 (global-set-key (kbd "M-S-<down>") 'move-text-down)
+
+(provide 'init)
+;;; init.el ends here
