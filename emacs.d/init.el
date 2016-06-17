@@ -143,6 +143,7 @@
 ;; Prevent speedbar refresh
 (require 'sr-speedbar)
 (sr-speedbar-refresh-turn-off)
+(setq speedbar-show-unknown-files t) ; show all files
 
 ;; Replace highlighted text in type
 (delete-selection-mode 1)
