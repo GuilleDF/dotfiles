@@ -164,3 +164,7 @@
 (require 'string-inflection)
 (global-unset-key (kbd "C-q"))
 (global-set-key (kbd "C-q C-u") 'string-inflection-all-cycle)
+
+;; Quick buffer switching
+(global-set-key (kbd "C-<tab>") 'mode-line-other-buffer)
+
