@@ -82,10 +82,10 @@
 (global-set-key (kbd "C-<f2>") 'sr-speedbar-toggle)
 
 ;; speedy window switching
-(global-set-key (kbd "C-<left>") 'windmove-left)
-(global-set-key (kbd "C-<right>") 'windmove-right)
-(global-set-key (kbd "C-<up>") 'windmove-up)
-(global-set-key (kbd "C-<down>") 'windmove-down)
+(global-set-key (kbd "C-S-<left>") 'windmove-left)
+(global-set-key (kbd "C-S-<right>") 'windmove-right)
+(global-set-key (kbd "C-S-<up>") 'windmove-up)
+(global-set-key (kbd "C-S-<down>") 'windmove-down)
 
 
 ;; Term shortcut
