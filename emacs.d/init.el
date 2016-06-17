@@ -159,3 +159,8 @@
   (interactive "p")
   (yank-pop (- arg)))
 (global-set-key "\M-Y" 'yank-pop-forwards) ; M-Y (Meta-Shift-Y)
+
+;; Switch between camel cased & underscored
+(require 'string-inflection)
+(global-unset-key (kbd "C-q"))
+(global-set-key (kbd "C-q C-u") 'string-inflection-all-cycle)
