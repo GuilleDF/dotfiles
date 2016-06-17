@@ -6,6 +6,10 @@
  ;; If there is more than one, they won't work right.
  '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/autosaves/\\1" t))))
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
+ '(custom-enabled-themes (quote (badwolf)))
+ '(custom-safe-themes
+   (quote
+    ("c4a784404a2a732ef86ee969ab94ec8b8033aee674cd20240b8addeba93e1612" default)))
  '(inhibit-startup-screen t)
  '(nxml-slash-auto-complete-flag t)
  '(sr-speedbar-right-side nil))
