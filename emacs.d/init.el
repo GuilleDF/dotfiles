@@ -168,3 +168,7 @@
 ;; Quick buffer switching
 (global-set-key (kbd "C-<tab>") 'mode-line-other-buffer)
 
+
+;; Intellij-like text moving
+(global-set-key (kbd "M-S-<up>") 'move-text-up)
+(global-set-key (kbd "M-S-<down>") 'move-text-down)
