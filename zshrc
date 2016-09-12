@@ -40,3 +40,11 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=white'
 alias cm='cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON'
 alias ckm='catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=ON'
 alias ckmp='catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=ON --pkg'
+
+cki() {
+    touch $AEROSTACK_STACK/$1/CATKIN_IGNORE
+}
+
+ckni() {
+    rm $AEROSTACK_STACK/$1/CATKIN_IGNORE
+}

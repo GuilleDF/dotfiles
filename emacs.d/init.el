@@ -7,15 +7,20 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(ansi-color-names-vector
+   ["#2e3436" "#a40000" "#4e9a06" "#c4a000" "#204a87" "#5c3566" "#729fcf" "#eeeeec"])
  '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/autosaves/\\1" t))))
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
- '(custom-enabled-themes (quote (badwolf)))
  '(custom-safe-themes
    (quote
     ("c4a784404a2a732ef86ee969ab94ec8b8033aee674cd20240b8addeba93e1612" default)))
+ '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(nxml-slash-auto-complete-flag t)
- '(sr-speedbar-right-side nil))
+ '(sr-speedbar-right-side nil)
+ '(whitespace-line-column 95))
 
 ;; xml end tag
 ;; (global-set-key (kbd ">") 'nxml-balanced-close-start-tag-inline)
@@ -175,6 +180,22 @@
 ;; Intellij-like text moving
 (global-set-key (kbd "M-S-<up>") 'move-text-up)
 (global-set-key (kbd "M-S-<down>") 'move-text-down)
+
+;; Set theme
+(load-theme (quote badwolf))
+
+;; Set persistent highlighting
+(require 'highlight)
+(require 'evil-search-highlight-persist)
+(global-evil-search-highlight-persist t)
+
+;; Enable whitespace mode
+(global-whitespace-mode)
+
+;; Multiple cursor goodies
+(require 'multiple-cursors)
+(global-set-key (kbd "C-S-c") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-c C-m") 'mc/edit-lines)
 
 (provide 'init)
 ;;; init.el ends here
