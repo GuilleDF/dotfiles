@@ -18,6 +18,7 @@
     ("c4a784404a2a732ef86ee969ab94ec8b8033aee674cd20240b8addeba93e1612" default)))
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
+ '(neo-dont-be-alone t)
  '(nxml-slash-auto-complete-flag t)
  '(sr-speedbar-right-side nil)
  '(whitespace-line-column 95))
@@ -87,7 +88,12 @@
  )
 
 ;; enable speedbar
-(global-set-key (kbd "C-<f2>") 'sr-speedbar-toggle)
+;; (global-set-key (kbd "C-<f2>") 'sr-speedbar-toggle)
+
+;; enable neotree
+(add-to-list 'load-path "/directory/containing/neotree/")
+(require 'neotree)
+(global-set-key (kbd "C-<f2>") 'neotree-toggle)
 
 ;; speedy window switching
 (global-set-key (kbd "C-S-<left>") 'windmove-left)
@@ -148,10 +154,10 @@
 ;; Remove toolbar
 (tool-bar-mode -1)
 
-;; Prevent speedbar refresh
-(require 'sr-speedbar)
-(sr-speedbar-refresh-turn-off)
-(setq speedbar-show-unknown-files t) ; show all files
+;; ;; Prevent speedbar refresh
+;; (require 'sr-speedbar)
+;; (sr-speedbar-refresh-turn-off)
+;; (setq speedbar-show-unknown-files t) ; show all files
 
 ;; Replace highlighted text in type
 (delete-selection-mode 1)
