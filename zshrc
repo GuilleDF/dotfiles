@@ -48,3 +48,8 @@ cki() {
 ckni() {
     rm $AEROSTACK_STACK/$1/CATKIN_IGNORE
 }
+
+# Ubuntu aliases
+alias ai='sudo apt-get install'
+alias au='sudo apt-get update'
+alias as='apt-cache search'

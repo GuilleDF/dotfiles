@@ -19,6 +19,8 @@
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(neo-dont-be-alone t)
+ '(neo-window-fixed-size nil)
+ '(neo-window-width 30)
  '(nxml-slash-auto-complete-flag t)
  '(sr-speedbar-right-side nil)
  '(whitespace-line-column 95))
@@ -202,6 +204,16 @@
 (require 'multiple-cursors)
 (global-set-key (kbd "C-S-c") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-c C-m") 'mc/edit-lines)
+
+;; Code folding
+(autoload 'hideshowvis-enable "hideshowvis" "Highlight foldable regions")
+(autoload 'hideshowvis-minor-mode
+  "hideshowvis"
+  "Will indicate regions foldable with hideshow in the fringe."
+  'interactive)
+(dolist (hook (list 'emacs-lisp-mode-hook
+                    'c++-mode-hook))
+  (add-hook hook 'hideshowvis-enable))
 
 (provide 'init)
 ;;; init.el ends here
