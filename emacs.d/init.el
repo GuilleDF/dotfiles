@@ -23,7 +23,8 @@
  '(neo-window-width 30)
  '(nxml-slash-auto-complete-flag t)
  '(sr-speedbar-right-side nil)
- '(whitespace-line-column 95))
+ '(tabbar-background-color "gray8")
+ '(whitespace-line-column 2000))
 
 ;; xml end tag
 ;; (global-set-key (kbd ">") 'nxml-balanced-close-start-tag-inline)
@@ -87,7 +88,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(tabbar-button ((t (:inherit tabbar-default :box (:line-width 1 :color "dim gray")))))
+ '(tabbar-modified ((t (:inherit tabbar-default :foreground "green" :box (:line-width 1 :color "dim gray" :style released-button)))))
+ '(tabbar-selected ((t (:inherit tabbar-default :foreground "white" :box (:line-width 1 :color "dim gray" :style released-button)))))
+ '(tabbar-selected-modified ((t (:inherit tabbar-default :foreground "red" :box (:line-width 1 :color "dim gray" :style released-button)))))
+ '(tabbar-unselected ((t (:inherit tabbar-default)))))
 
 ;; enable speedbar
 ;; (global-set-key (kbd "C-<f2>") 'sr-speedbar-toggle)
@@ -214,6 +219,19 @@
 (dolist (hook (list 'emacs-lisp-mode-hook
                     'c++-mode-hook))
   (add-hook hook 'hideshowvis-enable))
+
+;; Tabbar
+(require 'tabbar)
+(tabbar-mode)
+(setq tabbar-buffer-groups-function
+      (lambda ()
+        (list "All")))
+ (setq tabbar-buffer-list-function
+       (lambda ()
+         (remove-if
+          (lambda(buffer)
+            (find (aref (buffer-name buffer) 0) " *"))
+          (buffer-list))))
 
 (provide 'init)
 ;;; init.el ends here
