@@ -53,3 +53,7 @@ ckni() {
 alias ai='sudo apt-get install'
 alias au='sudo apt-get update'
 alias as='apt-cache search'
+
+# cd to workspace/stack
+alias cdw='cd $AEROSTACK_WORKSPACE'
+alias cds='cd $AEROSTACK_STACK'
