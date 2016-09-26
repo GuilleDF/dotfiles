@@ -23,7 +23,12 @@
  '(neo-window-width 30)
  '(nxml-slash-auto-complete-flag t)
  '(sr-speedbar-right-side nil)
- '(tabbar-background-color "gray8")
+ '(tabbar-background-color "gray9")
+ '(tabbar-ruler-fancy-close-image nil)
+ '(tabbar-ruler-modified-symbol t)
+ '(tabbar-ruler-style (quote (quote firefox)))
+ '(tabbar-ruler-swap-faces nil)
+ '(tabbar-ruler-use-mode-icons nil)
  '(whitespace-line-column 2000))
 
 ;; xml end tag
@@ -82,20 +87,6 @@
 ;; Ciao mode for all .pl
 (setq auto-mode-alist
       (cons '("\\.pl$" . ciao-mode) auto-mode-alist))
-
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(tabbar-button ((t (:inherit tabbar-default :box (:line-width 1 :color "dim gray")))))
- '(tabbar-modified ((t (:inherit tabbar-default :foreground "green" :box (:line-width 1 :color "dim gray" :style released-button)))))
- '(tabbar-selected ((t (:inherit tabbar-default :foreground "white" :box (:line-width 1 :color "dim gray" :style released-button)))))
- '(tabbar-selected-modified ((t (:inherit tabbar-default :foreground "red" :box (:line-width 1 :color "dim gray" :style released-button)))))
- '(tabbar-unselected ((t (:inherit tabbar-default)))))
-
-;; enable speedbar
-;; (global-set-key (kbd "C-<f2>") 'sr-speedbar-toggle)
 
 ;; enable neotree
 (add-to-list 'load-path "/directory/containing/neotree/")
@@ -220,18 +211,14 @@
                     'c++-mode-hook))
   (add-hook hook 'hideshowvis-enable))
 
-;; Tabbar
-(require 'tabbar)
-(tabbar-mode)
-(setq tabbar-buffer-groups-function
-      (lambda ()
-        (list "All")))
- (setq tabbar-buffer-list-function
-       (lambda ()
-         (remove-if
-          (lambda(buffer)
-            (find (aref (buffer-name buffer) 0) " *"))
-          (buffer-list))))
+(setq tabbar-ruler-global-tabbar t)
+(require 'tabbar-ruler)
 
 (provide 'init)
 ;;; init.el ends here
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
