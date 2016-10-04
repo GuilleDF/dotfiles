@@ -214,11 +214,16 @@
 (setq tabbar-ruler-global-tabbar t)
 (require 'tabbar-ruler)
 
-(provide 'init)
-;;; init.el ends here
+;; IEdit mode
+(global-set-key (kbd "C-c ,") 'iedit-mode)
+
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(provide 'init)
+;;; init.el ends here
