@@ -3,6 +3,9 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        autopair-insert-or-skip-quote
+        c-electric-colon
+        c-electric-semi&comma
         ))
 
 (setq mc/cmds-to-run-once
@@ -10,4 +13,5 @@
         autopair-insert-opening
         autopair-newline
         electric-newline-and-maybe-indent
+        find-file
         ))

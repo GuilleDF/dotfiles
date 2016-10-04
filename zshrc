@@ -61,3 +61,6 @@ cdw() {
 cds() {
     cd $AEROSTACK_STACK/$1
 }
+
+# Spacemac alias
+alias spacemacs='HOME=/home/guillermo/spacemacs emacs'
