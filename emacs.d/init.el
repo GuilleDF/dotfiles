@@ -18,11 +18,14 @@
     ("c4a784404a2a732ef86ee969ab94ec8b8033aee674cd20240b8addeba93e1612" default)))
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
+ '(minimap-highlight-line nil)
+ '(minimap-minimum-width 0)
+ '(minimap-width-fraction 0.15)
+ '(minimap-window-location (quote right))
  '(neo-dont-be-alone t)
  '(neo-window-fixed-size nil)
  '(neo-window-width 30)
  '(nxml-slash-auto-complete-flag t)
- '(sr-speedbar-right-side nil)
  '(tabbar-background-color "gray9")
  '(tabbar-ruler-fancy-close-image nil)
  '(tabbar-ruler-modified-symbol t)
@@ -219,6 +222,9 @@
 
 ;; Line numbers
 (global-linum-mode 1)
+
+;; Minimap
+(global-set-key (kbd "C-<f1>") 'minimap-mode)
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
