@@ -217,6 +217,8 @@
 ;; IEdit mode
 (global-set-key (kbd "C-c ,") 'iedit-mode)
 
+;; Line numbers
+(global-linum-mode 1)
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
