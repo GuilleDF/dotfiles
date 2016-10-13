@@ -63,7 +63,7 @@
 ;; Line cursor and custom window size when windowed
 (when (display-graphic-p)
   (setq-default cursor-type 'bar))
-(if (window-system) (set-frame-size (selected-frame) 100 30))
+(if (window-system) (add-to-list 'default-frame-alist '(fullscreen . maximized)))
 
 ;; Octave mode for all .m
 (setq auto-mode-alist
