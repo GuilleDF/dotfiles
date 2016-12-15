@@ -226,6 +226,10 @@
 ;; Minimap
 (global-set-key (kbd "C-<f1>") 'minimap-mode)
 
+;; Hide & show shortcuts
+(global-set-key (kbd "C-c h") 'hs-hide-all)
+(global-set-key (kbd "C-c s") 'hs-show-all)
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -32,9 +32,9 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 export EDITOR=emacs
 
 source /opt/ros/jade/setup.zsh
-export AEROSTACK_WORKSPACE=/home/guillermo/workspace/ros/quadrotor_stack_catkin_ws
-export AEROSTACK_STACK=/home/guillermo/workspace/ros/quadrotor_stack_catkin_ws/src/quadrotor_stack
-export DRONE_STACK=/home/guillermo/workspace/ros/quadrotor_stack_catkin_ws/src/quadrotor_stack
+export AEROSTACK_WORKSPACE=$HOME/workspace/ros/aerostack_catkin_ws
+export AEROSTACK_STACK=$HOME/workspace/ros/aerostack_catkin_ws/src/aerostack_stack
+export DRONE_STACK=$HOME/workspace/ros/aerostack_catkin_ws/src/aerostack_stack
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=white'
 
 alias cm='cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON'
@@ -53,6 +53,7 @@ ckni() {
 alias ai='sudo apt-get install'
 alias au='sudo apt-get update'
 alias as='apt-cache search'
+alias appa='sudo add-apt-repository'
 
 # cd to workspace/stack
 cdw() {
@@ -61,6 +62,18 @@ cdw() {
 cds() {
     cd $AEROSTACK_STACK/$1
 }
+# Completions for these commands
+_cdw() {
+    _path_files -W $AEROSTACK_WORKSPACE -/
+}
+_cds() {
+    _path_files -W $AEROSTACK_STACK -/
+}
+compdef _cds cds
+compdef _cdw cdw
 
 # Spacemac alias
-alias spacemacs='HOME=/home/guillermo/spacemacs emacs'
+alias spacemacs='HOME=$HOME/spacemacs emacs'
+
+# Source aerostack
+source $AEROSTACK_WORKSPACE/devel/setup.zsh
