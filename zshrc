@@ -33,8 +33,8 @@ export EDITOR=emacs
 
 source /opt/ros/jade/setup.zsh
 export AEROSTACK_WORKSPACE=$HOME/workspace/ros/aerostack_catkin_ws
-export AEROSTACK_STACK=$HOME/workspace/ros/aerostack_catkin_ws/src/aerostack_stack
-export DRONE_STACK=$HOME/workspace/ros/aerostack_catkin_ws/src/aerostack_stack
+export AEROSTACK_STACK=$AEROSTACK_WORKSPACE/src/aerostack_stack
+export DRONE_STACK=$AEROSTACK_STACK
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=white'
 
 alias cm='cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON'
