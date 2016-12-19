@@ -72,6 +72,9 @@ _cds() {
 compdef _cds cds
 compdef _cdw cdw
 
+compdef _cds cki
+compdef _cds ckni
+
 # Spacemac alias
 alias spacemacs='HOME=$HOME/spacemacs emacs'
 
