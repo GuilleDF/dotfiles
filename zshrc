@@ -3,7 +3,7 @@ HISTFILE=~/.zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
 setopt appendhistory beep extendedglob notify
-unsetopt autocd nomatch
+unsetopt autocd nomatch share_history
 bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
@@ -13,21 +13,21 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-autoload -U promptinit colors
-promptinit
-colors
+ANTIGEN_DIR="~/.zsh/antigen"
+if [[ ! -d "$ANTIGEN_DIR" ]]; then
+  git clone https://github.com/zsh-users/antigen.git $ANTIGEN_DIR
+fi
 
-source ~/.zsh/antigen/antigen.zsh
+source $ANTIGEN_DIR/antigen.zsh
 
-antigen bundle git
 antigen use oh-my-zsh
+antigen bundle git
+antigen bundle zsh-users/zsh-autosuggestions
 antigen theme lukerandall
-
+antigen apply
 
 bindkey "^[[3~" delete-char
 bindkey "^[3;5~" delete-char
-
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 export EDITOR=emacs
 
