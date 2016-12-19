@@ -80,3 +80,6 @@ alias spacemacs='HOME=$HOME/spacemacs emacs'
 
 # Source aerostack
 source $AEROSTACK_WORKSPACE/devel/setup.zsh
+
+# tail -f alias
+alias tf='tail -n 500 -f'
