@@ -36,7 +36,7 @@ if [ -d '/opt/ros/jade' ]; then
 
   EMACS_FLAG='-DCMAKE_EXPORT_COMPILE_COMMANDS=ON'
   PYTHON_FLAGS=''
-  if [[ "$(python --version | awk '{print $2}' | awk -F '.' '{print $1}')" == "3" ]]; then
+  if [[ "$(python --version | awk '{print $2}' | awk -F '.' '{print $1}')" == "3" ]] &>/dev/null; then
     PYTHON_FLAGS="$PYTHON_FLAGS -DPYTHON_EXECUTABLE=/usr/bin/python2 -DPYTHON_INCLUDE_DIR=/usr/include/python2.7"
     PYTHON_FLAGS="$PYTHON_FLAGS -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so"
   fi
