@@ -55,12 +55,6 @@ if [ -d '/opt/ros/jade' ]; then
     rm $AEROSTACK_STACK/$1/CATKIN_IGNORE
   }
 
-  # Ubuntu aliases
-  alias ai='sudo apt-get install'
-  alias au='sudo apt-get update'
-  alias as='apt-cache search'
-  alias appa='sudo add-apt-repository'
-
   # cd to workspace/stack
   cdw() {
     cd $AEROSTACK_WORKSPACE/$1
@@ -84,6 +78,14 @@ if [ -d '/opt/ros/jade' ]; then
   # Source aerostack
   source $AEROSTACK_WORKSPACE/devel/setup.zsh
 fi
+
+
+# Ubuntu aliases
+alias ai='sudo apt-get install'
+alias au='sudo apt-get update'
+alias as='apt-cache search'
+alias appa='sudo add-apt-repository'
+
 
 # Spacemacs alias
 alias spacemacs='HOME=$HOME/spacemacs emacs'
