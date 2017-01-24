@@ -8,7 +8,7 @@ bindkey -e
 autoload -Uz compinit
 compinit
 
-ANTIGEN_DIR="~/.zsh/antigen"
+ANTIGEN_DIR="$HOME/.zsh/antigen"
 if [[ ! -d "$ANTIGEN_DIR" ]]; then
   git clone https://github.com/zsh-users/antigen.git $ANTIGEN_DIR
 fi
