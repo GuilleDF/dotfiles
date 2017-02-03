@@ -77,6 +77,9 @@ if [ -d '/opt/ros/jade' ]; then
 
   # Source aerostack
   source $AEROSTACK_WORKSPACE/devel/setup.zsh
+
+  # Add launchers to path
+  export PATH="$PATH:$AEROSTACK_STACK/launchers"
 fi
 
 
