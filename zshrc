@@ -44,8 +44,28 @@ if [ -d '/opt/ros/jade' ]; then
   CM_FLAGS="$EMACS_FLAG $PYTHON_FLAGS"
 
   alias cm="cmake $CM_FLAGS"
-  alias ckm="catkin_make $CM_FLAGS"
-  alias ckmp="catkin_make $CM_FLAGS --pkg"
+
+  catkin_command() {
+    dir=$PWD
+    cd $AEROSTACK_WORKSPACE
+    $@
+    source devel/setup.zsh
+    cd $dir
+  }
+
+  ckm() {
+    catkin_command catkin_make $CM_FLAGS $@
+  }
+
+  alias ckmp="ckm --pkg"
+
+  ct() {
+    if [[ $1 =~ '.*process.*' ]]; then
+      catkin_command catkin_make $1_test && rostest $1 $1.launch
+    else
+      catkin_command catkin_make run_tests_$1_gtest_$1_test
+    fi
+  }
 
   cki() {
     touch $AEROSTACK_STACK/$1/CATKIN_IGNORE
@@ -95,3 +115,4 @@ alias spacemacs='HOME=$HOME/spacemacs emacs'
 
 # tail -f alias
 alias tf='tail -n 500 -f'
+alias todo='emacs TODO.org'
