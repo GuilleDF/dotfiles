@@ -124,9 +124,16 @@ COLOR_LIGHT_BLUE='\033[0m\033[34m'
 COLOR_RESET='\033[0m'
 asi () {
   _search=$(apt-cache search $1)
-  echo -e ${_search} $COLOR_GREEN $(dpkg-query -f " [Installed]\n" --show alsa-utils 2>/dev/null) $COLOR_RESET | \
-    awk -v yl="$COLOR_YELLOW" -v bl="$COLOR_BLUE" -v lbl="$COLOR_LIGHT_BLUE" -v rst="$COLOR_RESET" -F' - ' \
-        '{num=(yl NR ") "); $1=(bl $1 lbl); print num $0 rst}'
+
+  i=1
+  echo ${_search} | \
+    while read line; do
+      echo $line $COLOR_GREEN $(dpkg-query -f " [Installed]\n" --show $(echo $line | awk '{print $1}') 2>/dev/null) $COLOR_RESET | \
+        awk -v yl="$COLOR_YELLOW" -v bl="$COLOR_BLUE" -v lbl="$COLOR_LIGHT_BLUE" -v rst="$COLOR_RESET" -v i=$i -F' - ' \
+            '{num=(yl i ") "); $1=(bl $1 lbl); print num $0 rst}'
+      ((i++))
+    done
+
   echo -n "Choose package: " && read _pkg_num
   if [[ ${_pkg_num} =~ [[:digit:]]+ ]]; then
     sudo apt-get install $(echo ${_search} | sed -n ${_pkg_num}p | awk '{print $1}')
