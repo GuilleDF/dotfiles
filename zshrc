@@ -28,6 +28,8 @@ export EDITOR=emacs
 
 # Only run work-related code if ros is installed
 if [ -d '/opt/ros/jade' ]; then
+  antigen bundle GuilleDF/zsh-rosaliases
+
   source /opt/ros/jade/setup.zsh
   export AEROSTACK_WORKSPACE=$HOME/workspace/ros/aerostack_catkin_ws
   export AEROSTACK_STACK=$AEROSTACK_WORKSPACE/src/aerostack_stack
@@ -106,6 +108,13 @@ fi
 # Ubuntu aliases
 alias ai='sudo apt-get install'
 alias au='sudo apt-get update'
+alias aup='sudo apt-get upgrade'
+alias ar='sudo apt-get remove'
+alias aar='sudo apt-ǵet autoremove'
+alias af='apt-file'
+alias afu='sudo apt-file update'
+alias afs='apt-file search'
+alias afl='apt-file list'
 alias as='apt-cache search'
 alias appa='sudo add-apt-repository'
 
