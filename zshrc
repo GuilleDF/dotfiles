@@ -123,7 +123,7 @@ COLOR_BLUE='\033[0m\033[1m\033[34m'
 COLOR_LIGHT_BLUE='\033[0m\033[34m'
 COLOR_RESET='\033[0m'
 asi () {
-  _search=$(apt-cache search $1)
+  _search=$(apt-cache search $@)
 
   i=1
   echo ${_search} | \
