@@ -5,7 +5,7 @@ setopt appendhistory beep extendedglob notify
 unsetopt autocd nomatch share_history
 bindkey -e
 
-autoload -Uz compinit
+autoload -U compinit
 compinit
 
 ANTIGEN_DIR="$HOME/.zsh/antigen"
@@ -19,18 +19,17 @@ antigen use oh-my-zsh
 antigen bundle git
 antigen bundle zsh-users/zsh-autosuggestions
 antigen theme lukerandall
-antigen apply
 
 bindkey "^[[3~" delete-char
 bindkey "^[3;5~" delete-char
 
-export EDITOR=emacs
+export EDITOR='atom -w'
 
 # Only run work-related code if ros is installed
-if [ -d '/opt/ros/jade' ]; then
+if [ -d '/opt/ros/kinetic' ]; then
   antigen bundle GuilleDF/zsh-rosaliases
 
-  source /opt/ros/jade/setup.zsh
+  source /opt/ros/kinetic/setup.zsh
   export AEROSTACK_WORKSPACE=$HOME/workspace/ros/aerostack_catkin_ws
   export AEROSTACK_STACK=$AEROSTACK_WORKSPACE/src/aerostack_stack
   export DRONE_STACK=$AEROSTACK_STACK
@@ -59,6 +58,10 @@ if [ -d '/opt/ros/jade' ]; then
     catkin_command catkin_make $CM_FLAGS $@
   }
 
+  ckmh() {
+    AEROSTACK_WORKSPACE=$(pwd) AEROSTACK_STACK="$AEROSTACK_WORKSPACE/src/aerostack_stack" catkin_command catkin_make $CM_FLAGS $@
+  }
+
   alias ckmp="ckm --pkg"
 
   ct() {
@@ -84,66 +87,33 @@ if [ -d '/opt/ros/jade' ]; then
   cds() {
     cd $AEROSTACK_STACK/$1
   }
-  # Completions for these commands
-  _cdw() {
-    _path_files -W $AEROSTACK_WORKSPACE -/
-  }
-  _cds() {
-    _path_files -W $AEROSTACK_STACK -/
-  }
-  compdef _cds cds
-  compdef _cdw cdw
 
-  compdef _cds cki
-  compdef _cds ckni
+  # Completions for these commands
+  mkdir -p "$HOME/.zsh/completions"
+  echo -e '#compdef cdw \n  _path_files -W $AEROSTACK_WORKSPACE -/' > $HOME/.zsh/completions/_cdw
+  echo -e '#compdef cds cki ckni \n  _path_files -W $AEROSTACK_STACK -/' > $HOME/.zsh/completions/_cds
+
+  fpath=(~/.zsh/completions $fpath)
+  autoload -U _cds _cdw
 
   # Source aerostack
   source $AEROSTACK_WORKSPACE/devel/setup.zsh
 
   # Add launchers to path
   export PATH="$PATH:$AEROSTACK_STACK/launchers"
+  compdef _gnu_generic aerostack
 fi
 
 
 # Ubuntu aliases
-alias ai='sudo apt-get install'
-alias au='sudo apt-get update'
-alias aup='sudo apt-get upgrade'
-alias ar='sudo apt-get remove'
-alias aar='sudo apt-ǵet autoremove'
-alias af='apt-file'
-alias afu='sudo apt-file update'
-alias afs='apt-file search'
-alias afl='apt-file list'
-alias as='apt-cache search'
-alias appa='sudo add-apt-repository'
-COLOR_GREEN='\033[0m\033[1m\033[32m'
-COLOR_YELLOW='\033[0m\033[1m\033[33m'
-COLOR_BLUE='\033[0m\033[1m\033[34m'
-COLOR_LIGHT_BLUE='\033[0m\033[34m'
-COLOR_RESET='\033[0m'
-asi () {
-  _search=$(apt-cache search $@)
-
-  i=1
-  echo ${_search} | \
-    while read line; do
-      echo $line $COLOR_GREEN $(dpkg-query -f " [Installed]\n" --show $(echo $line | awk '{print $1}') 2>/dev/null) $COLOR_RESET | \
-        awk -v yl="$COLOR_YELLOW" -v bl="$COLOR_BLUE" -v lbl="$COLOR_LIGHT_BLUE" -v rst="$COLOR_RESET" -v i=$i -F' - ' \
-            '{num=(yl i ") "); $1=(bl $1 lbl); print num $0 rst}'
-      ((i++))
-    done
-
-  echo -n "Choose package: " && read _pkg_num
-  if [[ ${_pkg_num} =~ [[:digit:]]+ ]]; then
-    sudo apt-get install $(echo ${_search} | sed -n ${_pkg_num}p | awk '{print $1}')
-  fi
-}
-
+antigen bundle GuilleDF/zsh-ubuntualiases
 
 # Spacemacs alias
 alias spacemacs='HOME=$HOME/spacemacs emacs'
 
 # tail -f alias
 alias tf='tail -n 500 -f'
-alias todo='emacs TODO.org'
+
+export PATH="$PATH:$HOME/miniconda2/bin"
+
+antigen apply
