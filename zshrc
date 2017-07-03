@@ -88,20 +88,34 @@ if [ -d '/opt/ros/kinetic' ]; then
     cd $AEROSTACK_STACK/$1
   }
 
+  chst() {
+    _pwd=$PWD
+    if [[ "${1:0:1}" = "/" ]] || [[ "${1:0:1}" = "~" ]]; then
+      _dir=""
+    else
+      _dir="$PWD/"
+    fi
+    cd $AEROSTACK_WORKSPACE
+    rm -rf build devel
+    cd src
+    rm aerostack_stack
+    ln -s ${_dir}$1 aerostack_stack
+    cd ${_pwd}
+  }
+
   # Completions for these commands
   mkdir -p "$HOME/.zsh/completions"
   echo -e '#compdef cdw \n  _path_files -W $AEROSTACK_WORKSPACE -/' > $HOME/.zsh/completions/_cdw
   echo -e '#compdef cds cki ckni \n  _path_files -W $AEROSTACK_STACK -/' > $HOME/.zsh/completions/_cds
 
   fpath=(~/.zsh/completions $fpath)
-  autoload -U _cds _cdw
 
   # Source aerostack
   source $AEROSTACK_WORKSPACE/devel/setup.zsh
 
   # Add launchers to path
   export PATH="$PATH:$AEROSTACK_STACK/launchers"
-  compdef _gnu_generic aerostack
+  echo -e '#compdef aerostack \n  _gnu_generic' > $HOME/.zsh/completions/_aerostack
 fi
 
 
@@ -117,3 +131,4 @@ alias tf='tail -n 500 -f'
 export PATH="$PATH:$HOME/miniconda2/bin"
 
 antigen apply
+unsetopt share_history
