@@ -1,0 +1,78 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "/tmp/d-11743-3956-1pip6xo.icfe5yu8fr/package.tgz",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "/tmp/d-11743-3956-1pip6xo.icfe5yu8fr/package.tgz",
+        "spec": "/tmp/d-11743-3956-1pip6xo.icfe5yu8fr/package.tgz",
+        "type": "local"
+      },
+      "/tmp/apm-install-dir-11743-3956-86hu8g.2pldutbj4i"
+    ]
+  ],
+  "_from": "../d-11743-3956-1pip6xo.icfe5yu8fr/package.tgz",
+  "_id": "build-catkin-tools@1.0.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/build-catkin-tools",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "/tmp/d-11743-3956-1pip6xo.icfe5yu8fr/package.tgz",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "/tmp/d-11743-3956-1pip6xo.icfe5yu8fr/package.tgz",
+    "spec": "/tmp/d-11743-3956-1pip6xo.icfe5yu8fr/package.tgz",
+    "type": "local"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "file:../d-11743-3956-1pip6xo.icfe5yu8fr/package.tgz",
+  "_shasum": "e44307355bb528fda59cd13f74a1dc95830928b9",
+  "_shrinkwrap": null,
+  "_spec": "/tmp/d-11743-3956-1pip6xo.icfe5yu8fr/package.tgz",
+  "_where": "/tmp/apm-install-dir-11743-3956-86hu8g.2pldutbj4i",
+  "author": {
+    "name": "Jeremie Deray",
+    "email": "https://github.com/artivis"
+  },
+  "bugs": {
+    "url": "https://github.com/artivis/build-catkin-tools/issues"
+  },
+  "dependencies": {},
+  "description": "Build catkin_tools (ROS) workspace from within Atom.",
+  "devDependencies": {},
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "homepage": "https://github.com/artivis/build-catkin-tools#readme",
+  "keywords": [
+    "catkin_tools",
+    "catkin",
+    "ROS",
+    "build"
+  ],
+  "license": "MIT",
+  "main": "lib/build-catkin-tools.js",
+  "name": "build-catkin-tools",
+  "optionalDependencies": {},
+  "providedServices": {
+    "builder": {
+      "description": "Runs catkin build (catkin_tools)",
+      "versions": {
+        "2.0.0": "providingFunction"
+      }
+    }
+  },
+  "readme": "# catkin_tools build system for Atom\n\nUses the [atom-build](https://github.com/noseglid/atom-build) package to execute [catkin build](http://catkin-tools.readthedocs.io/en/latest/verbs/catkin_build.html) for the [catkin_tools](https://catkin-tools.readthedocs.io/en/latest/) package.\n\n-   Assuming the open project is either a `catkin_tools` workspace or a [ROS package](http://wiki.ros.org/Packages), this executes the `catkin build` command.\n-   Notice that as for now the `catkin_tools` workspace must have been built once.\n\nThanks to [build-cmake](https://atom.io/packages/build-cmake) from which this package is largely inspired.\n\n** Note This package requires [atom-build](https://github.com/noseglid/atom-build) to be installed.\n\n---\nTODO :\n\n-   [x] enable options.\n-   [x] choosing ROS_VERSION to be sourced.\n-   [x] passing args to `catkin build`.\n-   [x] option to clean first.\n-   [ ] allows for custom source path.\n-   [ ] support for catkin_make.\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/artivis/build-catkin-tools.git"
+  },
+  "version": "1.0.0"
+}

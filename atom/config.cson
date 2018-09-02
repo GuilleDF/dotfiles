@@ -1,0 +1,38 @@
+"*":
+  "autocomplete-clang": {}
+  core:
+    disabledPackages: [
+      "autocomplete-clang"
+    ]
+    telemetryConsent: "no"
+  editor:
+    fontSize: 15
+    showInvisibles: true
+  "exception-reporting":
+    userId: "b82d1ec6-3909-421f-bb51-1fec25976e17"
+  latex:
+    buildOnSave: true
+    outputDirectory: "build"
+  "linter-clang":
+    executablePath: "clang-3.8"
+  "linter-ui-default":
+    showPanel: true
+  "tree-view": {}
+  welcome:
+    showOnStartup: false
+".bibtex.text":
+  editor:
+    softWrap: true
+    softWrapAtPreferredLineLength: false
+".latex.log.text":
+  editor:
+    softWrap: true
+    softWrapAtPreferredLineLength: true
+".latex.tex.text":
+  editor:
+    softWrap: true
+    softWrapAtPreferredLineLength: true
+".tex.text":
+  editor:
+    softWrap: true
+    softWrapAtPreferredLineLength: true

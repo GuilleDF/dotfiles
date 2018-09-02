@@ -5,10 +5,10 @@ setopt appendhistory beep extendedglob notify
 unsetopt autocd nomatch share_history
 bindkey -e
 
-autoload -Uz compinit
+autoload -U compinit
 compinit
 
-ANTIGEN_DIR="~/.zsh/antigen"
+ANTIGEN_DIR="$HOME/.zsh/antigen"
 if [[ ! -d "$ANTIGEN_DIR" ]]; then
   git clone https://github.com/zsh-users/antigen.git $ANTIGEN_DIR
 fi
@@ -18,17 +18,18 @@ source $ANTIGEN_DIR/antigen.zsh
 antigen use oh-my-zsh
 antigen bundle git
 antigen bundle zsh-users/zsh-autosuggestions
-antigen theme lukerandall
-antigen apply
+#antigen theme lukerandall
 
 bindkey "^[[3~" delete-char
 bindkey "^[3;5~" delete-char
 
-export EDITOR=emacs
+export EDITOR='vim'
 
 # Only run work-related code if ros is installed
-if [ -d '/opt/ros/jade' ]; then
-  source /opt/ros/jade/setup.zsh
+if [ -d '/opt/ros/kinetic' ]; then
+  antigen bundle GuilleDF/zsh-rosaliases
+
+  source /opt/ros/kinetic/setup.zsh
   export AEROSTACK_WORKSPACE=$HOME/workspace/ros/aerostack_catkin_ws
   export AEROSTACK_STACK=$AEROSTACK_WORKSPACE/src/aerostack_stack
   export DRONE_STACK=$AEROSTACK_STACK
@@ -36,7 +37,7 @@ if [ -d '/opt/ros/jade' ]; then
 
   EMACS_FLAG='-DCMAKE_EXPORT_COMPILE_COMMANDS=ON'
   PYTHON_FLAGS=''
-  if [[ "$(python --version | awk '{print $2}' | awk -F '.' '{print $1}')" == "3" ]]; then
+  if [[ "$(python --version | awk '{print $2}' | awk -F '.' '{print $1}')" == "3" ]] &>/dev/null; then
     PYTHON_FLAGS="$PYTHON_FLAGS -DPYTHON_EXECUTABLE=/usr/bin/python2 -DPYTHON_INCLUDE_DIR=/usr/include/python2.7"
     PYTHON_FLAGS="$PYTHON_FLAGS -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so"
   fi
@@ -44,8 +45,32 @@ if [ -d '/opt/ros/jade' ]; then
   CM_FLAGS="$EMACS_FLAG $PYTHON_FLAGS"
 
   alias cm="cmake $CM_FLAGS"
-  alias ckm="catkin_make $CM_FLAGS"
-  alias ckmp="catkin_make $CM_FLAGS --pkg"
+
+  catkin_command() {
+    dir=$PWD
+    cd $AEROSTACK_WORKSPACE
+    $@
+    source devel/setup.zsh
+    cd $dir
+  }
+
+  ckm() {
+    catkin_command catkin_make $CM_FLAGS $@
+  }
+
+  ckmh() {
+    AEROSTACK_WORKSPACE=$(pwd) AEROSTACK_STACK="$AEROSTACK_WORKSPACE/src/aerostack_stack" catkin_command catkin_make $CM_FLAGS $@
+  }
+
+  alias ckmp="ckm --pkg"
+
+  ct() {
+    if [[ $1 =~ '.*process.*' ]]; then
+      catkin_command catkin_make $1_test && rostest $1 $1.launch
+    else
+      catkin_command catkin_make run_tests_$1_gtest_$1_test
+    fi
+  }
 
   cki() {
     touch $AEROSTACK_STACK/$1/CATKIN_IGNORE
@@ -55,12 +80,6 @@ if [ -d '/opt/ros/jade' ]; then
     rm $AEROSTACK_STACK/$1/CATKIN_IGNORE
   }
 
-  # Ubuntu aliases
-  alias ai='sudo apt-get install'
-  alias au='sudo apt-get update'
-  alias as='apt-cache search'
-  alias appa='sudo add-apt-repository'
-
   # cd to workspace/stack
   cdw() {
     cd $AEROSTACK_WORKSPACE/$1
@@ -68,25 +87,51 @@ if [ -d '/opt/ros/jade' ]; then
   cds() {
     cd $AEROSTACK_STACK/$1
   }
-  # Completions for these commands
-  _cdw() {
-    _path_files -W $AEROSTACK_WORKSPACE -/
-  }
-  _cds() {
-    _path_files -W $AEROSTACK_STACK -/
-  }
-  compdef _cds cds
-  compdef _cdw cdw
 
-  compdef _cds cki
-  compdef _cds ckni
+  chst() {
+    _pwd=$PWD
+    if [[ "${1:0:1}" = "/" ]] || [[ "${1:0:1}" = "~" ]]; then
+      _dir=""
+    else
+      _dir="$PWD/"
+    fi
+    cd $AEROSTACK_WORKSPACE
+    rm -rf build devel
+    cd src
+    rm aerostack_stack
+    ln -s ${_dir}$1 aerostack_stack
+    cd ${_pwd}
+  }
+
+  # Completions for these commands
+  mkdir -p "$HOME/.zsh/completions"
+  echo -e '#compdef cdw \n  _path_files -W $AEROSTACK_WORKSPACE -/' > $HOME/.zsh/completions/_cdw
+  echo -e '#compdef cds cki ckni \n  _path_files -W $AEROSTACK_STACK -/' > $HOME/.zsh/completions/_cds
+
+  fpath=($HOME/.zsh/completions $fpath)
 
   # Source aerostack
   source $AEROSTACK_WORKSPACE/devel/setup.zsh
+
+  # Add launchers to path
+  export PATH="$PATH:$AEROSTACK_STACK/launchers"
+  echo -e '#compdef aerostack \n  _gnu_generic' > $HOME/.zsh/completions/_aerostack
 fi
+
+
+# Ubuntu aliases
+antigen bundle GuilleDF/zsh-ubuntualiases
 
 # Spacemacs alias
 alias spacemacs='HOME=$HOME/spacemacs emacs'
 
 # tail -f alias
 alias tf='tail -n 500 -f'
+
+antigen apply
+unsetopt share_history
+
+# custom prompt
+export prompt='%{$fg_bold[blue]%}%2~%{$reset_color%} $(my_git_prompt_info)%{$reset_color%}%B»%b '
+
+
