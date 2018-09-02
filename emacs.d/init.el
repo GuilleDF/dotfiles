@@ -26,6 +26,7 @@
  '(neo-window-fixed-size nil)
  '(neo-window-width 30)
  '(nxml-slash-auto-complete-flag t)
+ '(python-indent-offset 2)
  '(sh-basic-offset 2)
  '(sh-indentation 2)
  '(standard-indent 2)

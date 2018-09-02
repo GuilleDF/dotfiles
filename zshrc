@@ -134,4 +134,3 @@ unsetopt share_history
 # custom prompt
 export prompt='%{$fg_bold[blue]%}%2~%{$reset_color%} $(my_git_prompt_info)%{$reset_color%}%B»%b '
 
-
