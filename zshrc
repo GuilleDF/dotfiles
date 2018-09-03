@@ -18,7 +18,7 @@ source $ANTIGEN_DIR/antigen.zsh
 antigen use oh-my-zsh
 antigen bundle git
 antigen bundle zsh-users/zsh-autosuggestions
-#antigen theme lukerandall
+antigen theme lukerandall
 
 bindkey "^[[3~" delete-char
 bindkey "^[3;5~" delete-char
@@ -131,6 +131,44 @@ alias tf='tail -n 500 -f'
 antigen apply
 unsetopt share_history
 
+PROXY_SERVER='proxygw01.mymhp.net'
+PROXY_PORT=3128
+
+if [[ -a /etc/apt/apt.conf.d/98-proxy ]]; then
+  export http_proxy="http://$PROXY_SERVER:$PROXY_PORT/"
+  export https_proxy="http://$PROXY_SERVER:$PROXY_PORT/"
+  export ftp_proxy="http://$PROXY_SERVER:$PROXY_PORT/"
+  export no_proxy="\"localhost,127.0.0.1,localaddress,.localdomain.com\""
+  export HTTP_PROXY="http://$PROXY_SERVER:$PROXY_PORT/"
+  export HTTPS_PROXY="http://$PROXY_SERVER:$PROXY_PORT/"
+  export FTP_PROXY="http://$PROXY_SERVER:$PROXY_PORT/"
+  export NO_PROXY="\"localhost,127.0.0.1,localaddress,.localdomain.com\""
+fi
+
+p() {
+  gsettings set org.gnome.system.proxy mode 'auto'
+  echo "Acquire::http::Proxy \"http://$SERVER:$PORT\";" | sudo tee /etc/apt/apt.conf.d/98-proxy >/dev/null
+  echo "[Service]\nEnvironment=\"HTTP_PROXY=http://$SERVER:$PORT/\" \"HTTPS_PROXY=http://$SERVER:$PORT/\" \"NO_PROXY=localhost,127.0.0.1\"" | sudo tee /etc/systemd/system/docker.service.d/proxy.conf >/dev/null
+  sudo systemctl daemon-reload
+  sudo systemctl restart docker
+}
+
+np() {
+ gsettings set org.gnome.system.proxy mode 'none'                                                     
+ sudo rm /etc/apt/apt.conf.d/98-proxy
+ sudo rm /etc/systemd/system/docker.service.d/proxy.conf
+ sudo systemctl daemon-reload
+ sudo systemctl restart docker
+}
+
+proxy_prompt() {
+  if [[ -a /etc/apt/apt.conf.d/98-proxy ]]; then
+    echo -n "[%{$fg_bold[green]%}proxy%{$reset_color%}] "
+  else
+    echo -n ''
+  fi
+}
+
 # custom prompt
-export prompt='%{$fg_bold[blue]%}%2~%{$reset_color%} $(my_git_prompt_info)%{$reset_color%}%B»%b '
+export prompt='$(proxy_prompt)%{$fg_bold[blue]%}%2~%{$reset_color%} $(my_git_prompt_info)%{$reset_color%}%B»%b '
 
