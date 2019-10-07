@@ -82,7 +82,7 @@
   },
   "description": "Lint C-based files using clang",
   "devDependencies": {
-    "eslint": "^3.18.0",
+    "eslint": "^6.5.1",
     "eslint-config-airbnb-base": "^11.1.2",
     "eslint-plugin-import": "^2.2.0",
     "jasmine-fix": "^1.0.1"
